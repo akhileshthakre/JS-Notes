@@ -1,0 +1,69 @@
+*What is Asynchrnous javascript?
+-Asynchronous programming is a form of parallel programming that allows a unit of work to run separately from the primary application thread
+- Basically it allow us to break down bigger projects in smaller tasks.
+- It has 3 methods callback, Promises, Async/await and by using that we can made a connection between them in such a way that we get a final result
+
+*Lets uderstand Synchronous and Asynchronous 
+Synchronous - step by step process means we cannot skip the in between task to achieve the final task and it is time consuming
+
+Asynchronous - it means we can parallely execute the steps without waiting for previous step to execute it reduce the time
+
+Examples - 
+////Synchronous Example
+console.log(" I ");
+console.log(" eat ");
+console.log(" ice cream ");
+console.log(" with a ");
+console.log(" spoon ");
+
+output - i eat ice crem with a spoon
+
+
+////Asynchronous Example
+console.log(" I ");
+console.log(" eat ");
+setTimeout(() =>{ 
+  console.log(" ice cream ");
+},3000)
+console.log(" with a ");
+console.log(" spoon ");
+
+output -  I eat with a spoon ice cream
+
+
+///Callback functon
+- It means calling a function inside another function
+- It makres relationshipt between the functions like children, grand children and so on
+Example -
+const a = (call_two) => {
+  console.log("step 1")
+  call_two()
+}
+
+const b = () => {
+  console.log("step 2")
+}
+
+a(b)
+
+-Problem with callback is it will become hell for example if we want to wait for grand grand child to finish it work we have to add that inside the gron child function which is already inside the child function and which is already inside the parent function it is call callbacks hell
+-Promises is for rescue
+
+////Promises
+- A promise is made
+- A promise is an object that may produce a single value some time in the future either a resolved value, or a reason that it's not resolved 
+Example - Suppose Icecream order made then it will be in pending status and from there it can be resolve or reject if resolve then we use .then and fulfil order if it is rejected then we catch it and add sorry message and close the order
+						PENDING
+				RESOLVE		        REJECT
+
+				.then  				.catch
+				        .finally
+
+.then - it runs when our promise resolve and we want to execute new step
+.catch - handles the erros part means reject part
+.finally it will run wether our promise resolve or reject
+
+
+//////Async/Await
+- It is better way to write promises 
+- Diffrence between Promise and Async

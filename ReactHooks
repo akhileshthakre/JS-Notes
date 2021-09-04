@@ -1,0 +1,164 @@
+React Hooks
+- Hooks are a function which help us
+- We can only use hooks in functional components
+- Everytime when our component runs hook should run in exact same order
+- We cannot add hooks inside if else condition
+- we cannot put them inside loops or functions
+- They must be at top level of the fuctional component
+- They cannot work in regular JS functionr or nested functions
+
+
+////////////////////useState()////////////////////////
+- It always returns an array with 2 values
+- 1st value always be current state and 2nd value is always function which we can call later to set the state or update the state
+- useState argument must be the initial state
+- The purpose of useState is to handle reactive data means any data which chnages in a app is called a state and when state changes we want to update teh information so we use useState
+
+syantax = const [state,setState] = useState(initialState)
+		 example => useState(1)
+			 		useState("A")
+			 		useState(() => {
+			 			initalState
+			 		})
+		 -Diffrence between example 1,2 and example 3 is exa 1,2  runs everytime whenever we render our application
+		 -But exa 3 only runs one time which may reduce the loading time
+
+- If we pass an object in the initial state useState({count:1,color:"black"}) then every time when we call setState it reset the object
+Example: const [state,setstate] = useState({count:1,theme:"blue"})
+		 const count = state.count
+		 const theme = state.theme
+		 const newValue =() => {
+		 	setState(prev => {
+		 		return { count: prev.count + 1}
+		 	})
+		 }
+		 Above code will only return 2 and not theme as it reset the object
+		 - If we dont want to reset the object then use spread operator(...)
+		 exa => return{ ...prev, count:prev.count +1}
+		 - Thats why we should use 2 diffent state one for count and other for theme
+
+
+//////////////////////useEffect()/////////////////////////////
+- useEffect serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes, but unified into a single API
+- useEffect allow us to implement all the lifecycle method in single API
+- It takes a function as its argument
+- For every render useEffect trigger and run
+- It render when componentDidMount or load then every time whenever componenet updates it run every time i.e componentDidUpdate but this result into the loop as everytime component update useEffect triggers
+- To avoid the infinite loop we use dependencies array as 2nd argument
+- It we give empty array means there is no dependencies and it will only runs one on inital render
+- If we give variable to the array then everytime that variable change useEffect again trigger
+- If we retur a function means we are unmounting i.e componentWillUnmount
+
+//////////////////////useContext()/////////////////////////////
+- It allows us to work with react context api which itself is the mechanism that allows us to share data throughout the components without passing props
+- useContext hook is a cleaner replacement for the Consumer component
+-Lets have a example suppose we have an Object call moods now to share the moods to multiple components we can create a context like below using createContext(moods).
+-Then we have to use the context Providese to scope the moods there like this <MoodContext.Provider> </MoodContext.Provider>.
+-Now any child component in it will inherited the value without pass any props refer below example <MoodEmoji /> component will inherit the moods.happy value
+-useContext allow use to access or consume the current value from the context provider
+
+const mood = {
+	happy: 'Happy',
+	sad: 'Sad'
+}
+
+const MoodContext = createContext(mood)
+
+const App = () => {
+	return (
+		<MoodContext.Provider value={mood.happy}> 
+			<MoodEmoji />
+		</MoodContext.Provider>
+	)
+}
+
+const MoodEmoji = () => {
+	const mood = useContext(MoodContext)
+	retunr (
+		<p>{mood}</p>
+	)
+}
+
+Now whenever value change iin parent it will auto refelct in the MoodEmoji component
+
+//////////////////////useRef()/////////////////////////////
+- it allows us to create a mutable object that will keep the same reference between renders.
+- It can be use when you have a value that changes kind of like setState but the diffrence being it doesnt trigger a re-render when value changes
+- Mutable value does not re-render UI
+- const App = () => {
+	const myBtn = useRef(null)
+
+	const clickIt = () => myBtn.current.click()
+	return (
+		<button ref={myBtn}></button>
+	)
+}
+- Whenever you click on button it will not re render the UI
+- the most common case for use Ref to grab HTML element form the DOM
+
+//////////////////////useReducer()/////////////////////////////
+- It is similar to setState but instead of updating the state directly it use dispatch action that goes to reducer function and this function determines how to compute the next state
+- Just like useState it returns arrays of two values
+
+	const [state,dispatch] = useReducer()
+- The 1st being the reative state that we want to show in the UI
+- The 2nd value is a dispatch action
+- useReducer take two argument 1st is the reducer function and 2nd is the initial state
+
+const reducer = (state.action) {
+	switch (action.type){
+		case 'increment':
+			return state + 1
+		case 'decrement':
+			return state - 1
+		default:
+			throw ne Error()
+	}
+	
+}
+
+const App = () => {
+	const[state,dispatch] = useReducer(reducer,0)
+	return (
+		<>
+			Count: {state}
+			<button onClick={() => dispatch({type:'decrement'})}>-</button>
+			<button onClick={() => dispatch({type:'increment'})}>+</button>
+		</>
+	)
+}
+
+- UseReducer helps us to manage complexity
+
+//////////////////////useMemo()/////////////////////////////
+- It helps use to optimize computation cost for improve performance
+- It caches result of function call
+- it is use to deal with exprensive computation that we kno it hurting performance
+- It take the dependencies array as 2nd argument
+
+- const [count,setCount] = useState(60)
+
+  const expensiveCount = useMemo(() => {
+  return count **2;
+  },[count])
+
+- In above example whenever count changes then only the function trigger and recompute the count
+
+//////////////////////useCallback()/////////////////////////////
+- When you define a function inside the component a new object is created each time the compponet is re rendered.
+- To memorize the function we use useCallback hook
+- Most common use case is when we pass the same function to the muliple chind component
+- By wrapping the function in as useCallback we prevent unnecessary rerender of the children
+
+
+
+SELECT question_id FROM questionbank INNER JOIN multipleoption ON question_id = option_id;
+
+INSERT INTO multipleoptions(option_1,option_2,option_3,_option_4) VALUES('Hypertext Markup Language','HighProfile Markup Language','Both 1 and 2','None of the above')
+
+SELECT *
+FROM multipleoptions
+INNER JOIN questionbank ON questionbank.question_id = multipleoptions.option_id;
+
+
+GPA- Supplier manager, 

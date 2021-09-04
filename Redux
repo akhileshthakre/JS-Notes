@@ -1,0 +1,45 @@
+What is Redux?
+- Redux is a libraray for managing and updating the application state using event call "actions"
+- It is serves as centralize stores for the state that need to use accross entire application
+- It ensure that state only update in predctable fashion
+
+Action - It ask us what to do?
+		 It is a plain JS Object that have "type" field
+		 It only tells what to do, but it dont tell how to do
+		 Exa - 
+			 export const number = (num) => {
+				 return {
+				 	type: 'ACTIONTYPE',
+				 	payload: num
+				 	}
+			 	}
+
+Reducer - contains current state of the Action
+		- It has a powe to update the state
+		- Reducers are function that take the current state and an action as arguments, and return a new state result
+		Exa-
+			const initialState = 0
+			const changeNumber = (state = initialState, number) => {
+				if(number.type == "ATIONTYPE") {
+					return state + number.payload
+				}else {
+					return state - 1
+				}
+			}
+
+Store - Object which holds the state of the applications
+		It brings together the state,actions,reducers that make your app
+		We can have only single store in our redux application
+		Every Redux store can only have single rootReducer function
+		Important functions -createStore()
+							 dispatch(action)
+							 getState()
+
+		Exa -
+			import {createStore} from "redux"
+			const store = createStore(rootReducers)
+
+Some Principles of Redux
+- Single source of truth - means the global state of app stores as an object inside a single store
+- State is read only - The only way to change the state is to dispatch an action
+- Immutability, One-way data flow, Predictability and outcome

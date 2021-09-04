@@ -1,0 +1,100 @@
+app.get - to get the information
+app.post -  to post the inofrmation
+app.patch - to update the informaton
+app.delete - to delete the information
+
+
+What is node js?
+- It is an environment to run JS outside of Bowser
+- Build on chromes V8 engine
+- It is Javacript Runtime it is not a language or a framework  
+- Written in C++
+- It allow us to run JS code on the server
+
+Why Use Node?
+- Fast Efficient and higly scalable
+- Event driven, non blocking I/O model
+- Same language as Frontend that is JS
+
+What do you mean by Non-Blocking I/O?
+- Works on a single thread using non-blocking I/O calls
+- Supports tens of thousands consurrent connections
+- Optimizes throughput and scalability in apps with many I/O operations 
+- Non Blocking means it works on a single thread asynhrounously
+- Somthing like PHP works in multiple thread
+
+What is Event Loops?
+- It runs on a single threaded
+- Supports concurrency via events and callbacks it means whenever event trigger callbacks fires so by this system doent have to wait for one process to end to run next process
+- EventEmitter class is used to bind the events and listeners
+
+What types of Project node is Good for?
+- Anything thats no CPU intensive
+- Rest API and Microservices
+- Real time services (Chats, Live updates)
+- CURD Apps = Blogs, Shopping cart, social Network
+
+What is NPM?
+- Node Package manager - It helps us install 3rd party packages(framworks, libraries, tools etc)
+- pakages stores in Node_module folder
+- All dependencies listed in a "package.json" file
+- npm init --> Generated a package.json file
+
+
+BrowserJs vs Node Js
+-DOM   			 	No DOM
+-Window  			No Window
+-Interactive type 	Server side App
+-No FileSystem      Filesystem
+-Fragmentation      Versions
+
+Concept of Globals
+- __dirname - path to current directory
+- __filename - file name
+- require -  function to use modules 
+- module - info about current module(file)
+- process - info about env here the program is being executed
+
+///Modules
+- Modules basically are Encapsulated Code 
+- In Node Every file is Module by default
+
+//Built in Modules
+- OS  --> const os = require('os')
+- Path --> const path = require('path')
+- FS   --> const fs = require('fs')
+- HTTP --> const http = require('http')
+-URL --> const url = require('url')
+
+1) Path -> It is use to work with file directory
+		a)path.basename() -> It gives us the filename
+		b)path.dirname() -> It give us the directory name
+		c)path.extname() -> It give us the etension of the file
+		d)path.parse()->crete an object of file with all necesaary info
+		e)path.join() -> It concatenaet the paths
+
+2) FS -> It is use to work with file system. By defualt it is asynchronous if we are not using any Synchronus modules
+		a)fs.mkdir() -> it create the folder
+		b)fs.writeFile() -> It is use to create and wwrite new file
+		c)fs.appendFile() -> It is use to append new text in existing file
+		d)fs.readFile() -> use to read the content from the file
+		e)fs.rename() - > use to rename the file to given name
+
+3) OS ->  It give us information about our environment means our OS
+		a)os.platform() -> It gives us the name of the platform we are using example windows,linux,darwin for Mac
+		b)os.arch() -> It give us CPU architecture exa - x64
+		c)os.cpus() -> It gives us objec with info of CPUS core
+		d)os.freemem() -> It gives us Free momory available
+		e)os.totalmem() -> it give us total memory of the system
+		f)os.homedir() -> It give us OS home directory name
+		g)os.uptime() -> It give us the up time of the system
+
+4) URL -> It works with URL
+		 exa ->const myUrl = new URL('http://mywebsite.com:8080/hello.html?id=100&status=active')
+		 a)myUrl.href -> It will gie the URL as it is
+		 b)myUrl.host -> It will give us the host i.e mywebsite.com:8080
+		 c)myUrl.hostname -> It will give us the host name without port
+		 d)myUrl.pathname -> It give us the pathname i.e hello.html
+		 e)myUrl.search -> It give us everything after the questio mark i.e parameters
+		 f)myUrl.searchParams -> It will gives us parameters in object
+		 g)myUrl.searchParams.append('abc','123') -> we can append the params usnig append method

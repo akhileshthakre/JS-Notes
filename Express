@@ -1,0 +1,22 @@
+What is Express?
+- It is fast, unopinionated and minimalist web framework for Node.js
+- It is server side or backend freamwork.
+- It is not comparable to client-side framwork like React, Angular or Vue.
+- It can be used in combination with those framwork to build full stack applications
+
+Why we should use Express?
+- Makes buildinf web app with Node.js much easier
+- User for both server rnedered apps as weel ass API/Microservices
+- Extremly light, fast and free
+- Full cotrol of request and response
+
+What are express middleware functions?
+- They are functions that have access to the request and response object.
+- Express has built in middleware but middelware also comes from 3rd party packages as well as custom midleware
+- Middleware use for Execute ay code, Make chages to the req/res objects, End respose cycle, call next middleware in the stack
+
+RestFulAPI- It basically take the http request and instruct the DB to perform the CURD operation in it
+
+res.json({message:"hello"}) -  it will send a json structure
+res.download('server.js') - it will send server.js file to download
+res.render() - it will render our html file
