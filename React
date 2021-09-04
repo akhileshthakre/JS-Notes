@@ -1,0 +1,12 @@
+React
+- It is a JS library for building user interfaces
+
+bind(), call() and apply() are all used to modify the context of a function
+
+Object.keys(empty).length === 0 && empty.constructor === Object
+
+Data Binding is the process of connecting the view element or user interface, with the data which populates it
+
+Lazy loading means that a component or a part of code must get loaded when it is required. It is also referred to as code splitting and data fetching
+
+Closures is an ability of a function to remember the variables and functions that are declared in its outer scope.
